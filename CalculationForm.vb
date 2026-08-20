@@ -6,7 +6,7 @@ Public Class CalculationForm
     Dim memoryImage As Bitmap
     'Dim drPatientSelectn() As PatientDataSet.XCalc_graphRow
     Public Sub DataOutput()
-        Me.EntranceDoseLabel.Text = checkVal(Math.Round(dblmAs * dblRateDev * 0.87 / 100 * Math.Pow(100 / 85, 2), 1)) '0,87/100 - наверное, перевод из Р в Гр. Math.Pow(100/85) - наверное, пересчет от точки, на которой измерен радиационный выход, к точке, на которой определяется входная доза
+        Me.EntranceDoseLabel.Text = checkVal(Math.Round(dblmAs * dblRateDev * 0.87 / 100 * Math.Pow(100 / 85, 2), 1)) '0,87/100 - РЅР°РІРµСЂРЅРѕРµ, РїРµСЂРµРІРѕРґ РёР· Р  РІ Р“СЂ. Math.Pow(100/85) - РЅР°РІРµСЂРЅРѕРµ, РїРµСЂРµСЃС‡РµС‚ РѕС‚ С‚РѕС‡РєРё, РЅР° РєРѕС‚РѕСЂРѕР№ РёР·РјРµСЂРµРЅ СЂР°РґРёР°С†РёРѕРЅРЅС‹Р№ РІС‹С…РѕРґ, Рє С‚РѕС‡РєРµ, РЅР° РєРѕС‚РѕСЂРѕР№ РѕРїСЂРµРґРµР»СЏРµС‚СЃСЏ РІС…РѕРґРЅР°СЏ РґРѕР·Р°
         Select Case intSex
             Case 2 'women first
                 Me.UterusLabel.Visible = True 'display labels for female organ doses
@@ -14,7 +14,7 @@ Public Class CalculationForm
                 Me.EffectiveDose.Visible = True
                 Me.EffectiveDoseLabel.Visible = True
                 Me.EffectiveDoseLabel.Text = checkVal(dbEffDose)
-                Me.GonadsLabel.Text = "1 " & My.Resources.Ovaries ' название гонад
+                Me.GonadsLabel.Text = "1 " & My.Resources.Ovaries ' РЅР°Р·РІР°РЅРёРµ РіРѕРЅР°Рґ
                 ' doses
                 Me.GonadsDoseLabel.Text = checkVal(MainDosesFInterpFinal(0))
                 Me.RBMDoseLabel.Text = checkVal(MainDosesFInterpFinal(1))
@@ -83,9 +83,9 @@ Public Class CalculationForm
                 Me.OralMucosaDoseLabel.Text = checkVal(AdditionalDosesMInterpFinal(11))
                 Me.SalivaryGlandsDoseLabel.Text = checkVal(MainDosesMInterpFinal(13))
         End Select
-        RentgenCalculator.MainForm.ProcedureDataGridView.DataSource = Nothing 'стирание данных, загруженных в табличку во вкладке "Аппарат"
+        RentgenCalculator.MainForm.ProcedureDataGridView.DataSource = Nothing 'СЃС‚РёСЂР°РЅРёРµ РґР°РЅРЅС‹С…, Р·Р°РіСЂСѓР¶РµРЅРЅС‹С… РІ С‚Р°Р±Р»РёС‡РєСѓ РІРѕ РІРєР»Р°РґРєРµ "РђРїРїР°СЂР°С‚"
         RentgenCalculator.MainForm.ProcTree.CollapseAll()
-        'RentgenCalculator.MainForm.MaskedTextBox1.Text = "" 'стирание даты рождения 'убрано 6 июня 2019
+        'RentgenCalculator.MainForm.MaskedTextBox1.Text = "" 'СЃС‚РёСЂР°РЅРёРµ РґР°С‚С‹ СЂРѕР¶РґРµРЅРёСЏ 'СѓР±СЂР°РЅРѕ 6 РёСЋРЅСЏ 2019
     End Sub
     Private Sub CaptureScreen()
         Dim myGraphics As Graphics = Me.CreateGraphics()
@@ -105,21 +105,21 @@ Public Class CalculationForm
 
     End Sub
 
-    Private Sub ПечатьToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ПечатьToolStripMenuItem.Click
+    Private Sub РџРµС‡Р°С‚СЊToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles РџРµС‡Р°С‚СЊToolStripMenuItem.Click
         CaptureScreen()
         PrintDocument1.Print()
     End Sub
 
-    Private Sub ВФайлеToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ВФайлеToolStripMenuItem.Click
+    Private Sub Р’Р¤Р°Р№Р»РµToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Р’Р¤Р°Р№Р»РµToolStripMenuItem.Click
         Dim Gender As String
         Dim NumProc As Byte = 1 'defines the current number of procs for the current patient today
         Dim num As Integer = 0 'loop var for loop in records of Patients db
         Try
 
             If (intSex.Equals(1)) Or (MainForm.RadioButton1.Checked) Then 'the condition consists of two statements because it is not clear at what moment the variable was changed 
-                Gender = "М" 'change encoding to numbers
+                Gender = "Рњ" 'change encoding to numbers
             Else
-                Gender = "Ж"
+                Gender = "Р–"
             End If
             'the text file is for debug only. should be removed for user
             Dim FileName As String = Environment.CurrentDirectory & "\PatientsList.txt"
@@ -132,10 +132,10 @@ Public Class CalculationForm
                 da4.Fill(dt4)
                 'da4.Update(drInsert) 'here can be an error if the db file is read-only
             End If
-            'просмотр базы данных и проверка, есть ли в ней данная запись
+            'РїСЂРѕСЃРјРѕС‚СЂ Р±Р°Р·С‹ РґР°РЅРЅС‹С… Рё РїСЂРѕРІРµСЂРєР°, РµСЃС‚СЊ Р»Рё РІ РЅРµР№ РґР°РЅРЅР°СЏ Р·Р°РїРёСЃСЊ
             Do While num < dt4.Rows.Count 'incremetrs NumProc if needed
                 'check for the calculation number for today should be done
-                If ((strName = dt4.Rows(num).Item(7)) And (strSurname = dt4.Rows(num).Item(8)) And (strPatronymic = dt4.Rows(num).Item(9)) And (dt4.Rows(num).Item(3) = MainForm.DateTimePicker1.Text)) Then 'добавить проверку на РДА
+                If ((strName = dt4.Rows(num).Item(7)) And (strSurname = dt4.Rows(num).Item(8)) And (strPatronymic = dt4.Rows(num).Item(9)) And (dt4.Rows(num).Item(3) = MainForm.DateTimePicker1.Text)) Then 'РґРѕР±Р°РІРёС‚СЊ РїСЂРѕРІРµСЂРєСѓ РЅР° Р Р”Рђ
                     NumProc = NumProc + 1
                 End If
                 num = num + 1
@@ -162,31 +162,31 @@ Public Class CalculationForm
             drInsert("WIDTH") = strWidthCh 'Width of the field-fixed of integer type
             drInsert("HEIGHT") = dbHeight 'Height of the field
             drInsert("EFFDOSE") = dbEffDose 'write eff dose without rounding
-            RentgenCalculator.MainForm.MaskedTextBox1.Text = "" 'стирание даты рождения 'добавлено 6 июня 2019
+            RentgenCalculator.MainForm.MaskedTextBox1.Text = "" 'СЃС‚РёСЂР°РЅРёРµ РґР°С‚С‹ СЂРѕР¶РґРµРЅРёСЏ 'РґРѕР±Р°РІР»РµРЅРѕ 6 РёСЋРЅСЏ 2019
         Catch ex As Exception
-            MsgBox("Ошибка при записи информации" & vbCrLf & ex.Message, MsgBoxStyle.Exclamation, My.Resources.MainTitle)
+            MsgBox("РћС€РёР±РєР° РїСЂРё Р·Р°РїРёСЃРё РёРЅС„РѕСЂРјР°С†РёРё" & vbCrLf & ex.Message, MsgBoxStyle.Exclamation, My.Resources.MainTitle)
             Return
 
         End Try
         If (File.GetAttributes(strPatientsdbname) = FileAttributes.ReadOnly) Then 'to avoid an error if the db file is read-only
-            MsgBox("Файл базы данных доступен только для чтения, невозможно сохранить данные.", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
+            MsgBox("Р¤Р°Р№Р» Р±Р°Р·С‹ РґР°РЅРЅС‹С… РґРѕСЃС‚СѓРїРµРЅ С‚РѕР»СЊРєРѕ РґР»СЏ С‡С‚РµРЅРёСЏ, РЅРµРІРѕР·РјРѕР¶РЅРѕ СЃРѕС…СЂР°РЅРёС‚СЊ РґР°РЅРЅС‹Рµ.", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
         Else
             num = 0
             Try
                 dt4.Rows.Add(drInsert)
                 ' And (Math.Round(dbEffDose, 10) = Math.Round(dt4.Rows(num).Item(17), 10)))'useful for checking duplicates
             Catch CE As System.Data.ConstraintException
-                MsgBox("Невозможно записать результат в связи с ограничениями, наложенными на повторяюшиеся записи.", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
+                MsgBox("РќРµРІРѕР·РјРѕР¶РЅРѕ Р·Р°РїРёСЃР°С‚СЊ СЂРµР·СѓР»СЊС‚Р°С‚ РІ СЃРІСЏР·Рё СЃ РѕРіСЂР°РЅРёС‡РµРЅРёСЏРјРё, РЅР°Р»РѕР¶РµРЅРЅС‹РјРё РЅР° РїРѕРІС‚РѕСЂСЏСЋС€РёРµСЃСЏ Р·Р°РїРёСЃРё.", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
             Catch ex As NoNullAllowedException
-                MsgBox(ex.Message & vbCrLf & "Возможно, вы только что уже записали это исследование.", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
+                MsgBox(ex.Message & vbCrLf & "Р’РѕР·РјРѕР¶РЅРѕ, РІС‹ С‚РѕР»СЊРєРѕ С‡С‚Рѕ СѓР¶Рµ Р·Р°РїРёСЃР°Р»Рё СЌС‚Рѕ РёСЃСЃР»РµРґРѕРІР°РЅРёРµ.", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
             End Try
             Try
                 da4.Update(drInsert)
             Catch ex As OverflowException
-                MsgBox("Переполнение. Не удалось сохранить результаты расчета доз в базе данных.", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
+                MsgBox("РџРµСЂРµРїРѕР»РЅРµРЅРёРµ. РќРµ СѓРґР°Р»РѕСЃСЊ СЃРѕС…СЂР°РЅРёС‚СЊ СЂРµР·СѓР»СЊС‚Р°С‚С‹ СЂР°СЃС‡РµС‚Р° РґРѕР· РІ Р±Р°Р·Рµ РґР°РЅРЅС‹С….", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
             End Try
-            MsgBox("Данные успешно сохранены", MsgBoxStyle.Information, My.Resources.MainTitle)
-            'Me.Close() 'Эта строка удалена из таблицы и не содержит данных. BeginEdit() позволит создать в этой строке новые данные.
+            MsgBox("Р”Р°РЅРЅС‹Рµ СѓСЃРїРµС€РЅРѕ СЃРѕС…СЂР°РЅРµРЅС‹", MsgBoxStyle.Information, My.Resources.MainTitle)
+            'Me.Close() 'Р­С‚Р° СЃС‚СЂРѕРєР° СѓРґР°Р»РµРЅР° РёР· С‚Р°Р±Р»РёС†С‹ Рё РЅРµ СЃРѕРґРµСЂР¶РёС‚ РґР°РЅРЅС‹С…. BeginEdit() РїРѕР·РІРѕР»РёС‚ СЃРѕР·РґР°С‚СЊ РІ СЌС‚РѕР№ СЃС‚СЂРѕРєРµ РЅРѕРІС‹Рµ РґР°РЅРЅС‹Рµ.
         End If
     End Sub
 
