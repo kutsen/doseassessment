@@ -26,7 +26,7 @@ Public Class MainForm
                 sr0.Close()
             Catch Exception As System.Exception
                 System.IO.File.Create(strFileName)
-                MsgBox("Файл " & Chr(34) & strFileName & Chr(34) & " отсутствует. Он был создан заново. Убедитесь в правильности задания ОКПО.", MsgBoxStyle.Exclamation, My.Resources.MainTitle) 'или расчет может быть произведен, но не сохраняться в базу
+                MsgBox("Р¤Р°Р№Р» " & Chr(34) & strFileName & Chr(34) & " РѕС‚СЃСѓС‚СЃС‚РІСѓРµС‚. РћРЅ Р±С‹Р» СЃРѕР·РґР°РЅ Р·Р°РЅРѕРІРѕ. РЈР±РµРґРёС‚РµСЃСЊ РІ РїСЂР°РІРёР»СЊРЅРѕСЃС‚Рё Р·Р°РґР°РЅРёСЏ РћРљРџРћ.", MsgBoxStyle.Exclamation, My.Resources.MainTitle) 'РёР»Рё СЂР°СЃС‡РµС‚ РјРѕР¶РµС‚ Р±С‹С‚СЊ РїСЂРѕРёР·РІРµРґРµРЅ, РЅРѕ РЅРµ СЃРѕС…СЂР°РЅСЏС‚СЊСЃСЏ РІ Р±Р°Р·Сѓ
                 Return
             End Try
         End If 'check whether the file exists
@@ -34,9 +34,9 @@ Public Class MainForm
             Try
                 strHospCode = sr1.ReadLine.Split(New [Char]() {"="c})(1)
             Catch NRE As System.NullReferenceException
-                MsgBox("Файл " & Chr(34) & strFileName & Chr(34) & " испорчен. Необходима переустановка программы.", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
+                MsgBox("Р¤Р°Р№Р» " & Chr(34) & strFileName & Chr(34) & " РёСЃРїРѕСЂС‡РµРЅ. РќРµРѕР±С…РѕРґРёРјР° РїРµСЂРµСѓСЃС‚Р°РЅРѕРІРєР° РїСЂРѕРіСЂР°РјРјС‹.", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
                 NewApparatusForm.Show()
-                'здесь бы записать в файл и тут же прочесть из него
+                'Р·РґРµСЃСЊ Р±С‹ Р·Р°РїРёСЃР°С‚СЊ РІ С„Р°Р№Р» Рё С‚СѓС‚ Р¶Рµ РїСЂРѕС‡РµСЃС‚СЊ РёР· РЅРµРіРѕ
             End Try
             sr1.Close()
             NewApparatusForm.OrganizationTextBox.Text = strHospCode
@@ -50,7 +50,7 @@ Public Class MainForm
                 'wait until Dialog ends
                 Me.TabControl1.SelectTab(1)
                 Me.DataGridView1.AllowUserToAddRows = True
-                Me.XRayUnitListLabel.Text = My.Resources.CreateApListLabel '"Создание списка используемых рентгеновских аппаратов"
+                Me.XRayUnitListLabel.Text = My.Resources.CreateApListLabel '"РЎРѕР·РґР°РЅРёРµ СЃРїРёСЃРєР° РёСЃРїРѕР»СЊР·СѓРµРјС‹С… СЂРµРЅС‚РіРµРЅРѕРІСЃРєРёС… Р°РїРїР°СЂР°С‚РѕРІ"
             Case Is > 0
                 Me.DataGridView1.DataSource = dt2
         End Select
@@ -111,8 +111,8 @@ Public Class MainForm
             intSex = 1
             GroupBox1.ForeColor = Color.Black 'color change
         End If
-        'по-видимому, проверка, какие процедуры загружены во вкладке "Процедуры"
-        ' при расчете доз эффективная доза выдается на оба фантома, но органные дозы только на соответствующий
+        'РїРѕ-РІРёРґРёРјРѕРјСѓ, РїСЂРѕРІРµСЂРєР°, РєР°РєРёРµ РїСЂРѕС†РµРґСѓСЂС‹ Р·Р°РіСЂСѓР¶РµРЅС‹ РІРѕ РІРєР»Р°РґРєРµ "РџСЂРѕС†РµРґСѓСЂС‹"
+        ' РїСЂРё СЂР°СЃС‡РµС‚Рµ РґРѕР· СЌС„С„РµРєС‚РёРІРЅР°СЏ РґРѕР·Р° РІС‹РґР°РµС‚СЃСЏ РЅР° РѕР±Р° С„Р°РЅС‚РѕРјР°, РЅРѕ РѕСЂРіР°РЅРЅС‹Рµ РґРѕР·С‹ С‚РѕР»СЊРєРѕ РЅР° СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёР№
         'If strProjectionCode <> Nothing Then
         ' Me.DataGridView2.DataSource = dt3.Select("ProjectionCode=" & "'" & strProjectionCode & "'") '& " and Group=" & intSex)
         ' End If
@@ -159,7 +159,7 @@ Public Class MainForm
             If DateTime.TryParse(MaskedTextBox1.Text, dtBirthDate) Then
                 If Convert.ToDateTime(MaskedTextBox1.Text, CultureInfo.CurrentUICulture) < Date.Now Then
                     Dim MaskedTextBox1Split As String() = Me.MaskedTextBox1.Text.Split(separator) 'reading birth date.
-                    intAge = DateDiff(DateInterval.Year, Convert.ToDateTime(MaskedTextBox1.Text, CultureInfo.CurrentUICulture), Now()) ' присвоение переменной полных лет
+                    intAge = DateDiff(DateInterval.Year, Convert.ToDateTime(MaskedTextBox1.Text, CultureInfo.CurrentUICulture), Now()) ' РїСЂРёСЃРІРѕРµРЅРёРµ РїРµСЂРµРјРµРЅРЅРѕР№ РїРѕР»РЅС‹С… Р»РµС‚
                     MaskedTextBox1.ForeColor = Color.Black
                 Else
                     ToolTip1.Show(Global.RentgenCalculator.My.Resources.TipDate, MaskedTextBox1, 2000)
@@ -169,11 +169,11 @@ Public Class MainForm
                 ToolTip1.Show(My.Resources.TipWrongDateFormat, MaskedTextBox1, 2000)
                 MaskedTextBox1.ForeColor = Color.Red
                 Exit Sub
-            End If ' попытка преобразовать число в формат даты
-        End If ' проверка, заполнено ли значение.
+            End If ' РїРѕРїС‹С‚РєР° РїСЂРµРѕР±СЂР°Р·РѕРІР°С‚СЊ С‡РёСЃР»Рѕ РІ С„РѕСЂРјР°С‚ РґР°С‚С‹
+        End If ' РїСЂРѕРІРµСЂРєР°, Р·Р°РїРѕР»РЅРµРЅРѕ Р»Рё Р·РЅР°С‡РµРЅРёРµ.
     End Sub
     Private Sub TextBox2_Leave(ByVal sender As Object, ByVal e As System.EventArgs) Handles FamilyNameTextBox.Leave
-        'здесь может быть масса проблем: в том числе переносы на новую строку.
+        'Р·РґРµСЃСЊ РјРѕР¶РµС‚ Р±С‹С‚СЊ РјР°СЃСЃР° РїСЂРѕР±Р»РµРј: РІ С‚РѕРј С‡РёСЃР»Рµ РїРµСЂРµРЅРѕСЃС‹ РЅР° РЅРѕРІСѓСЋ СЃС‚СЂРѕРєСѓ.
         If Not FamilyNameTextBox.Text = "" Then
             strSurname = Me.FamilyNameTextBox.Text
         Else
@@ -184,14 +184,14 @@ Public Class MainForm
         If Not GivenNameTextBox.Text = "" Then
             strName = Me.GivenNameTextBox.Text
         Else
-            ToolTip1.Show("Введите имя пациента.", GivenNameTextBox, 2000)
+            ToolTip1.Show("Р’РІРµРґРёС‚Рµ РёРјСЏ РїР°С†РёРµРЅС‚Р°.", GivenNameTextBox, 2000)
         End If
     End Sub
     Private Sub TextBox4_Leave(ByVal sender As Object, ByVal e As System.EventArgs) Handles PatronymicTextBox.Leave
         If Not PatronymicTextBox.Text = "" Then
             strPatronymic = Me.PatronymicTextBox.Text
         Else
-            ToolTip1.Show("Введите отчество пациента", GivenNameTextBox, 2000)
+            ToolTip1.Show("Р’РІРµРґРёС‚Рµ РѕС‚С‡РµСЃС‚РІРѕ РїР°С†РёРµРЅС‚Р°", GivenNameTextBox, 2000)
         End If
     End Sub
     Private Sub HeightTextBox_Leave(ByVal sender As Object, ByVal e As System.EventArgs)
@@ -199,7 +199,7 @@ Public Class MainForm
         If Len(Me.HeightTextBox.Text) > 0 Then
             Try
                 If Convert.ToDecimal(HeightTextBox.Text, CultureInfo.CurrentUICulture) > MaxHeight Or Convert.ToDecimal(HeightTextBox.Text, CultureInfo.CurrentUICulture) < MinHeight Then
-                    ToolTip1.ToolTipTitle = "Недействительное значение." 'это показывается не сразу
+                    ToolTip1.ToolTipTitle = "РќРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ." 'СЌС‚Рѕ РїРѕРєР°Р·С‹РІР°РµС‚СЃСЏ РЅРµ СЃСЂР°Р·Сѓ
                     ToolTip1.Show(strHeightMsg, HeightTextBox, 2000)
                     HeightTextBox.ForeColor = Color.Red
                 Else
@@ -212,8 +212,8 @@ Public Class MainForm
                     sngHeight = Convert.ToSingle(Me.HeightTextBox.Text, CultureInfo.CurrentUICulture)
                 End If
             Catch SFE As System.FormatException
-                ToolTip1.ToolTipTitle = "Недействительное значение." 'это показывается не сразу
-                ToolTip1.Show("Неверно введен рост пациента.", HeightTextBox, 2000)
+                ToolTip1.ToolTipTitle = "РќРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ." 'СЌС‚Рѕ РїРѕРєР°Р·С‹РІР°РµС‚СЃСЏ РЅРµ СЃСЂР°Р·Сѓ
+                ToolTip1.Show("РќРµРІРµСЂРЅРѕ РІРІРµРґРµРЅ СЂРѕСЃС‚ РїР°С†РёРµРЅС‚Р°.", HeightTextBox, 2000)
                 HeightTextBox.ForeColor = Color.Red
             End Try
         End If
@@ -232,8 +232,8 @@ Public Class MainForm
                     Me.PatientWeightTextBox.ForeColor = Color.Black
                 End If
             Catch SFE As System.FormatException
-                'MsgBox("Значение веса введено неверно.", MsgBoxStyle.Exclamation, My.Resources.MainTitle) 'SFE.Message
-                WeightTextToolTip.ToolTipTitle = "Недействительное значение."
+                'MsgBox("Р—РЅР°С‡РµРЅРёРµ РІРµСЃР° РІРІРµРґРµРЅРѕ РЅРµРІРµСЂРЅРѕ.", MsgBoxStyle.Exclamation, My.Resources.MainTitle) 'SFE.Message
+                WeightTextToolTip.ToolTipTitle = "РќРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ."
                 WeightTextToolTip.Show(My.Resources.MsgWrongWeight, PatientWeightTextBox, 5000)
                 PatientWeightTextBox.ForeColor = Color.Red
             End Try
@@ -241,7 +241,7 @@ Public Class MainForm
     End Sub
     Private Sub MaskedTextBox1_MaskInputRejected(ByVal sender As System.Object, ByVal e As System.Windows.Forms.MaskInputRejectedEventArgs) Handles MaskedTextBox1.MaskInputRejected
         Dim tooltip3 As New ToolTip
-        tooltip3.ToolTipTitle = "Недействительный ввод"
+        tooltip3.ToolTipTitle = "РќРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅС‹Р№ РІРІРѕРґ"
         tooltip3.Show(My.Resources.MsgDate1, MaskedTextBox1, 5000)
     End Sub
     Private Sub MainForm_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles Me.KeyDown
@@ -255,64 +255,64 @@ Public Class MainForm
         End If
     End Sub
     Private Sub RunButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RunButton.Click
-        If Not RegistryNumTextBox.Text = "" Then 'проверка присвоено ли и заполнено: добавлено 18.2.2019
-            strRegnum = Me.RegistryNumTextBox.Text 'ввод регистрационного номера  'добавлено 18.2.2019
+        If Not RegistryNumTextBox.Text = "" Then 'РїСЂРѕРІРµСЂРєР° РїСЂРёСЃРІРѕРµРЅРѕ Р»Рё Рё Р·Р°РїРѕР»РЅРµРЅРѕ: РґРѕР±Р°РІР»РµРЅРѕ 18.2.2019
+            strRegnum = Me.RegistryNumTextBox.Text 'РІРІРѕРґ СЂРµРіРёСЃС‚СЂР°С†РёРѕРЅРЅРѕРіРѕ РЅРѕРјРµСЂР°  'РґРѕР±Р°РІР»РµРЅРѕ 18.2.2019
         Else
-            MsgBox("Введите регистрационный номер!", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
+            MsgBox("Р’РІРµРґРёС‚Рµ СЂРµРіРёСЃС‚СЂР°С†РёРѕРЅРЅС‹Р№ РЅРѕРјРµСЂ!", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
             TabControl1.SelectTab(0)
             RegistryNumTextBox.Focus()
             Exit Sub
-        End If 'поле "Регистрационный номер" не пустое
+        End If 'РїРѕР»Рµ "Р РµРіРёСЃС‚СЂР°С†РёРѕРЅРЅС‹Р№ РЅРѕРјРµСЂ" РЅРµ РїСѓСЃС‚РѕРµ
         If intSex = Nothing Then
-            MsgBox("Не задан пол пациента.", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
+            MsgBox("РќРµ Р·Р°РґР°РЅ РїРѕР» РїР°С†РёРµРЅС‚Р°.", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
             Me.TabControl1.SelectTab(0)
             Me.GroupBox1.ForeColor = Color.Red
             Exit Sub
         Else
         End If
-        'начало проверки роста
+        'РЅР°С‡Р°Р»Рѕ РїСЂРѕРІРµСЂРєРё СЂРѕСЃС‚Р°
         '4 Feb 2022: is not neccessary for now
         'CheckHeight()
-        'конец проверки роста
-        'начало проверки фамилии
+        'РєРѕРЅРµС† РїСЂРѕРІРµСЂРєРё СЂРѕСЃС‚Р°
+        'РЅР°С‡Р°Р»Рѕ РїСЂРѕРІРµСЂРєРё С„Р°РјРёР»РёРё
         If Not FamilyNameTextBox.Text = "" Then
-            strSurname = Me.FamilyNameTextBox.Text ' внутренняя переменная значения, введенного в строку TextBox2 (фамилия)
+            strSurname = Me.FamilyNameTextBox.Text ' РІРЅСѓС‚СЂРµРЅРЅСЏСЏ РїРµСЂРµРјРµРЅРЅР°СЏ Р·РЅР°С‡РµРЅРёСЏ, РІРІРµРґРµРЅРЅРѕРіРѕ РІ СЃС‚СЂРѕРєСѓ TextBox2 (С„Р°РјРёР»РёСЏ)
         Else
-            MsgBox("Введите фамилию пациента.", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
+            MsgBox("Р’РІРµРґРёС‚Рµ С„Р°РјРёР»РёСЋ РїР°С†РёРµРЅС‚Р°.", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
             Me.TabControl1.SelectTab(0)
             FamilyNameTextBox.Focus()
             Exit Sub
         End If
-        'конец проверки фамилии
-        'начало проверки имени
+        'РєРѕРЅРµС† РїСЂРѕРІРµСЂРєРё С„Р°РјРёР»РёРё
+        'РЅР°С‡Р°Р»Рѕ РїСЂРѕРІРµСЂРєРё РёРјРµРЅРё
         If Not GivenNameTextBox.Text = "" Then
-            TextBox3_Leave(Me, Nothing) 'имя
+            TextBox3_Leave(Me, Nothing) 'РёРјСЏ
         Else
-            MsgBox("Введите имя пациента.", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
+            MsgBox("Р’РІРµРґРёС‚Рµ РёРјСЏ РїР°С†РёРµРЅС‚Р°.", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
             Me.TabControl1.SelectTab(0)
             GivenNameTextBox.Focus()
             Exit Sub
         End If
-        'конец проверки имени
-        'начало проверки очества
+        'РєРѕРЅРµС† РїСЂРѕРІРµСЂРєРё РёРјРµРЅРё
+        'РЅР°С‡Р°Р»Рѕ РїСЂРѕРІРµСЂРєРё РѕС‡РµСЃС‚РІР°
         If Not PatronymicTextBox.Text = "" Then
-            TextBox4_Leave(Me, Nothing) 'отчество
+            TextBox4_Leave(Me, Nothing) 'РѕС‚С‡РµСЃС‚РІРѕ
         Else
-            MsgBox("Введите отчество пациента.", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
+            MsgBox("Р’РІРµРґРёС‚Рµ РѕС‚С‡РµСЃС‚РІРѕ РїР°С†РёРµРЅС‚Р°.", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
             Me.TabControl1.SelectTab(0)
             PatronymicTextBox.Focus()
             Exit Sub
         End If
-        'конец проверки отчества
-        'начало проверки веса
+        'РєРѕРЅРµС† РїСЂРѕРІРµСЂРєРё РѕС‚С‡РµСЃС‚РІР°
+        'РЅР°С‡Р°Р»Рѕ РїСЂРѕРІРµСЂРєРё РІРµСЃР°
         If sngWeight = Nothing Then
             If PatientWeightTextBox.Text = "" Then
-                MsgBox("Введите вес пациента.", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
+                MsgBox("Р’РІРµРґРёС‚Рµ РІРµСЃ РїР°С†РёРµРЅС‚Р°.", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
                 TabControl1.SelectTab(0)
                 Me.PatientWeightTextBox.Focus()
                 Exit Sub
-            Else 'строка веса введена
-                Try 'попытка ввести вес
+            Else 'СЃС‚СЂРѕРєР° РІРµСЃР° РІРІРµРґРµРЅР°
+                Try 'РїРѕРїС‹С‚РєР° РІРІРµСЃС‚Рё РІРµСЃ
                     If Convert.ToDecimal(Me.PatientWeightTextBox.Text, CultureInfo.CurrentUICulture) > 150 Or Convert.ToDecimal(Me.PatientWeightTextBox.Text, CultureInfo.CurrentUICulture) < 3 Then
                         MsgBox(My.Resources.MsgWrongWeight, MsgBoxStyle.Exclamation, My.Resources.MainTitle)
                         Me.PatientWeightTextBox.ForeColor = Color.Red
@@ -324,36 +324,36 @@ Public Class MainForm
                         sngWeight = Convert.ToDouble(Me.PatientWeightTextBox.Text, CultureInfo.CurrentUICulture)
                     End If
                 Catch SFE As System.FormatException
-                    MsgBox("Ошибка чтения веса", MsgBoxStyle.Exclamation, My.Resources.MainTitle) 'SFE.Message
+                    MsgBox("РћС€РёР±РєР° С‡С‚РµРЅРёСЏ РІРµСЃР°", MsgBoxStyle.Exclamation, My.Resources.MainTitle) 'SFE.Message
                     PatientWeightTextBox.ForeColor = Color.Red
                     PatientWeightTextBox.Focus()
                 End Try
-            End If ' вес не введен
-        End If ' вес не определен
+            End If ' РІРµСЃ РЅРµ РІРІРµРґРµРЅ
+        End If ' РІРµСЃ РЅРµ РѕРїСЂРµРґРµР»РµРЅ
         'patient weight check end
-        'ввод РИПа для процедуры
+        'РІРІРѕРґ Р РРџР° РґР»СЏ РїСЂРѕС†РµРґСѓСЂС‹
         If Not FIDComboBox.Text Is Nothing Then
             If Not FIDComboBox.Text.Length = 0 Then
                 Try
                     strRipCh = Convert.ToDouble(FIDComboBox.Text, CultureInfo.CurrentUICulture)
                 Catch SFE As System.FormatException
-                    MsgBox("Выберите РИП", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
+                    MsgBox("Р’С‹Р±РµСЂРёС‚Рµ Р РРџ", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
                     TabControl1.SelectTab(1)
                     FIDComboBox.Focus()
                     Exit Sub
                 End Try
             Else
-                MsgBox("Не введен РИП.", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
+                MsgBox("РќРµ РІРІРµРґРµРЅ Р РРџ.", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
                 TabControl1.SelectTab(1)
                 FIDComboBox.Focus()
                 Exit Sub
             End If
         End If
-        'конец ввода РИПа
-        'начало ввода напряжения
+        'РєРѕРЅРµС† РІРІРѕРґР° Р РРџР°
+        'РЅР°С‡Р°Р»Рѕ РІРІРѕРґР° РЅР°РїСЂСЏР¶РµРЅРёСЏ
         Try
             If VoltageProcTextBox.Text = "" Then
-                MsgBox("Введите напряжение на рентгеновской трубке", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
+                MsgBox("Р’РІРµРґРёС‚Рµ РЅР°РїСЂСЏР¶РµРЅРёРµ РЅР° СЂРµРЅС‚РіРµРЅРѕРІСЃРєРѕР№ С‚СЂСѓР±РєРµ", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
                 VoltageProcTextBox.BackColor = Color.Red
                 TabControl1.SelectTab(1)
                 VoltageProcTextBox.Focus()
@@ -363,30 +363,30 @@ Public Class MainForm
                 VoltageProcTextBox.BackColor = Color.White
             End If
         Catch SFE As System.FormatException
-            MsgBox("Напряжение введено не верно. Должно быть число.", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
+            MsgBox("РќР°РїСЂСЏР¶РµРЅРёРµ РІРІРµРґРµРЅРѕ РЅРµ РІРµСЂРЅРѕ. Р”РѕР»Р¶РЅРѕ Р±С‹С‚СЊ С‡РёСЃР»Рѕ.", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
             TabControl1.SelectTab(1)
             VoltageProcTextBox.ForeColor = Color.Red
             Exit Sub
         End Try
-        'конец ввода напряжения
-        ' Работа с базой
+        'РєРѕРЅРµС† РІРІРѕРґР° РЅР°РїСЂСЏР¶РµРЅРёСЏ
+        ' Р Р°Р±РѕС‚Р° СЃ Р±Р°Р·РѕР№
         Try
         Catch NRE As System.NullReferenceException
-            MsgBox("Не задана процедура обследования.", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
+            MsgBox("РќРµ Р·Р°РґР°РЅР° РїСЂРѕС†РµРґСѓСЂР° РѕР±СЃР»РµРґРѕРІР°РЅРёСЏ.", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
             Exit Sub
         End Try
-        'проверка фильтра
+        'РїСЂРѕРІРµСЂРєР° С„РёР»СЊС‚СЂР°
         If FilterTextBox.Text = "" Then
-            MsgBox("Не введена толщина фильтра рентгеновской трубки.", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
+            MsgBox("РќРµ РІРІРµРґРµРЅР° С‚РѕР»С‰РёРЅР° С„РёР»СЊС‚СЂР° СЂРµРЅС‚РіРµРЅРѕРІСЃРєРѕР№ С‚СЂСѓР±РєРё.", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
             TabControl1.SelectTab(1)
             FilterTextBox.BackColor = Color.Red
             FilterTextBox.Focus()
             Exit Sub
         Else
             If Double.TryParse(FilterTextBox.Text, dblFilter2) Then
-                strFilterCh = Convert.ToDouble(FilterTextBox.Text) 'задание значение фильтра излучения
+                strFilterCh = Convert.ToDouble(FilterTextBox.Text) 'Р·Р°РґР°РЅРёРµ Р·РЅР°С‡РµРЅРёРµ С„РёР»СЊС‚СЂР° РёР·Р»СѓС‡РµРЅРёСЏ
                 If (strFilterCh < 0.1) Or (strFilterCh > 6) Then
-                    MsgBox("Значение фильтра должно лежать в пределах от 0.1 до 6 мм.", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
+                    MsgBox("Р—РЅР°С‡РµРЅРёРµ С„РёР»СЊС‚СЂР° РґРѕР»Р¶РЅРѕ Р»РµР¶Р°С‚СЊ РІ РїСЂРµРґРµР»Р°С… РѕС‚ 0.1 РґРѕ 6 РјРј.", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
                     FilterTextBox.ForeColor = Color.Red
                     TabControl1.SelectTab(1)
                     FilterTextBox.Focus()
@@ -396,33 +396,33 @@ Public Class MainForm
                     FilterTextBox.BackColor = Color.White
                 End If
             Else
-                MsgBox("Толщина фильтра введена неверно.", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
+                MsgBox("РўРѕР»С‰РёРЅР° С„РёР»СЊС‚СЂР° РІРІРµРґРµРЅР° РЅРµРІРµСЂРЅРѕ.", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
                 FilterTextBox.ForeColor = Color.Red
                 Exit Sub
-            End If 'попытка перевести введенное значение фильтра в число
-        End If ' если фильтр не введен в поле.
-        '  выборка радиационного выхода
+            End If 'РїРѕРїС‹С‚РєР° РїРµСЂРµРІРµСЃС‚Рё РІРІРµРґРµРЅРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ С„РёР»СЊС‚СЂР° РІ С‡РёСЃР»Рѕ
+        End If ' РµСЃР»Рё С„РёР»СЊС‚СЂ РЅРµ РІРІРµРґРµРЅ РІ РїРѕР»Рµ.
+        '  РІС‹Р±РѕСЂРєР° СЂР°РґРёР°С†РёРѕРЅРЅРѕРіРѕ РІС‹С…РѕРґР°
         If dblmAs = Nothing Then
-            If mAsTextBox.Text = "" Then ' проверить поле, если заполнено
-                MsgBox("Не задано значение мАс!", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
+            If mAsTextBox.Text = "" Then ' РїСЂРѕРІРµСЂРёС‚СЊ РїРѕР»Рµ, РµСЃР»Рё Р·Р°РїРѕР»РЅРµРЅРѕ
+                MsgBox("РќРµ Р·Р°РґР°РЅРѕ Р·РЅР°С‡РµРЅРёРµ РјРђСЃ!", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
                 Exit Sub
             Else
                 If Not Double.TryParse(mAsTextBox.Text, dblmAs) Then
-                    MsgBox("Неверный формат данных. Введите число.", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
+                    MsgBox("РќРµРІРµСЂРЅС‹Р№ С„РѕСЂРјР°С‚ РґР°РЅРЅС‹С…. Р’РІРµРґРёС‚Рµ С‡РёСЃР»Рѕ.", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
                     mAsTextBox.ForeColor = Color.Red
                     Exit Sub
                 Else
                     If dblmAs < 0.1 OrElse dblmAs > 1000 Then
-                        MsgBox("Неверное значение мАс. Величина мАс не может быть меньше 0,1 или больше 1000.", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
+                        MsgBox("РќРµРІРµСЂРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ РјРђСЃ. Р’РµР»РёС‡РёРЅР° РјРђСЃ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РјРµРЅСЊС€Рµ 0,1 РёР»Рё Р±РѕР»СЊС€Рµ 1000.", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
                         Exit Sub
                     Else
                         mAsTextBox.ForeColor = Color.Black
                         dblmAs = Convert.ToDouble(mAsTextBox.Text, CultureInfo.CurrentUICulture)
-                    End If 'произведение тока на выдержку находится в разрешенном диапазоне
-                End If 'неверный формат произведения тока на выдержку
-            End If ' произвдение тока на выдержку не введено
-        End If ' произвдение тока на выдержку не введено
-        'проверка информации о дате рождения
+                    End If 'РїСЂРѕРёР·РІРµРґРµРЅРёРµ С‚РѕРєР° РЅР° РІС‹РґРµСЂР¶РєСѓ РЅР°С…РѕРґРёС‚СЃСЏ РІ СЂР°Р·СЂРµС€РµРЅРЅРѕРј РґРёР°РїР°Р·РѕРЅРµ
+                End If 'РЅРµРІРµСЂРЅС‹Р№ С„РѕСЂРјР°С‚ РїСЂРѕРёР·РІРµРґРµРЅРёСЏ С‚РѕРєР° РЅР° РІС‹РґРµСЂР¶РєСѓ
+            End If ' РїСЂРѕРёР·РІРґРµРЅРёРµ С‚РѕРєР° РЅР° РІС‹РґРµСЂР¶РєСѓ РЅРµ РІРІРµРґРµРЅРѕ
+        End If ' РїСЂРѕРёР·РІРґРµРЅРёРµ С‚РѕРєР° РЅР° РІС‹РґРµСЂР¶РєСѓ РЅРµ РІРІРµРґРµРЅРѕ
+        'РїСЂРѕРІРµСЂРєР° РёРЅС„РѕСЂРјР°С†РёРё Рѕ РґР°С‚Рµ СЂРѕР¶РґРµРЅРёСЏ
         If MaskedTextBox1.MaskCompleted = True Then
             If Not IsDate(MaskedTextBox1.Text) Then
                 MsgBox(My.Resources.TipWrongDateFormat, MsgBoxStyle.Exclamation, My.Resources.MainTitle)
@@ -438,10 +438,10 @@ Public Class MainForm
                 Else
                     MaskedTextBox1.ForeColor = Color.Black
                     intAge = DateDiff(DateInterval.Year, Convert.ToDateTime(MaskedTextBox1.Text, CultureInfo.CurrentUICulture), Now())
-                End If 'дата меньше сегодняшней
-            End If 'Дата правильная
-        End If ' Поле "дата рождения" заполнена полностью
-        'чтение размеров поля
+                End If 'РґР°С‚Р° РјРµРЅСЊС€Рµ СЃРµРіРѕРґРЅСЏС€РЅРµР№
+            End If 'Р”Р°С‚Р° РїСЂР°РІРёР»СЊРЅР°СЏ
+        End If ' РџРѕР»Рµ "РґР°С‚Р° СЂРѕР¶РґРµРЅРёСЏ" Р·Р°РїРѕР»РЅРµРЅР° РїРѕР»РЅРѕСЃС‚СЊСЋ
+        'С‡С‚РµРЅРёРµ СЂР°Р·РјРµСЂРѕРІ РїРѕР»СЏ
         If FieldSizeComboBox.Text.Length > 0 Then
             Dim FieldSize As String() = FieldSizeComboBox.Text.Split("x")
             If FieldSize.Length = 2 Then
@@ -449,31 +449,31 @@ Public Class MainForm
                     strWidthCh = FieldSize(0)
                     dbHeight = FieldSize(1)
                 Catch FE As FormatException
-                    MsgBox("Неверный формат поля. Введите поле в формате 00x00. Размеры поля указывайте в сантиметрах", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
+                    MsgBox("РќРµРІРµСЂРЅС‹Р№ С„РѕСЂРјР°С‚ РїРѕР»СЏ. Р’РІРµРґРёС‚Рµ РїРѕР»Рµ РІ С„РѕСЂРјР°С‚Рµ 00x00. Р Р°Р·РјРµСЂС‹ РїРѕР»СЏ СѓРєР°Р·С‹РІР°Р№С‚Рµ РІ СЃР°РЅС‚РёРјРµС‚СЂР°С…", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
                     TabControl1.SelectTab(1)
                     FieldSizeComboBox.Focus()
                     Exit Sub
                 End Try
             Else
-                MsgBox("Поле облучения введено неверно. Введите поле в формате 00x00. Размеры поля указывайте в сантиметрах", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
+                MsgBox("РџРѕР»Рµ РѕР±Р»СѓС‡РµРЅРёСЏ РІРІРµРґРµРЅРѕ РЅРµРІРµСЂРЅРѕ. Р’РІРµРґРёС‚Рµ РїРѕР»Рµ РІ С„РѕСЂРјР°С‚Рµ 00x00. Р Р°Р·РјРµСЂС‹ РїРѕР»СЏ СѓРєР°Р·С‹РІР°Р№С‚Рµ РІ СЃР°РЅС‚РёРјРµС‚СЂР°С…", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
                 TabControl1.SelectTab(1)
                 FieldSizeComboBox.Focus()
                 Exit Sub
             End If
         Else
-            MsgBox("Не введено поле облучения. Введите поле.", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
+            MsgBox("РќРµ РІРІРµРґРµРЅРѕ РїРѕР»Рµ РѕР±Р»СѓС‡РµРЅРёСЏ. Р’РІРµРґРёС‚Рµ РїРѕР»Рµ.", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
             TabControl1.SelectTab(1)
             FieldSizeComboBox.Focus()
             Exit Sub
-        End If ' проверка, введено ли поле
-        ' выбранные в ниспадающих списках ширина, высота поля и РИП
+        End If ' РїСЂРѕРІРµСЂРєР°, РІРІРµРґРµРЅРѕ Р»Рё РїРѕР»Рµ
+        ' РІС‹Р±СЂР°РЅРЅС‹Рµ РІ РЅРёСЃРїР°РґР°СЋС‰РёС… СЃРїРёСЃРєР°С… С€РёСЂРёРЅР°, РІС‹СЃРѕС‚Р° РїРѕР»СЏ Рё Р РРџ
         If RippleTextBox.Text = "" Then
-            MsgBox("Не указана пульсация напряжения.", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
+            MsgBox("РќРµ СѓРєР°Р·Р°РЅР° РїСѓР»СЊСЃР°С†РёСЏ РЅР°РїСЂСЏР¶РµРЅРёСЏ.", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
         Else
             Dim tmpdblRipple As Double
             If Double.TryParse(RippleTextBox.Text, tmpdblRipple) Then
                 If Convert.ToDouble(RippleTextBox.Text) < 0 Or Convert.ToDouble(RippleTextBox.Text) > 7 Then
-                    MsgBox("Введено неверное значение пульсации напряжения. Значение может быть в пределах от 0 до 7", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
+                    MsgBox("Р’РІРµРґРµРЅРѕ РЅРµРІРµСЂРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ РїСѓР»СЊСЃР°С†РёРё РЅР°РїСЂСЏР¶РµРЅРёСЏ. Р—РЅР°С‡РµРЅРёРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РІ РїСЂРµРґРµР»Р°С… РѕС‚ 0 РґРѕ 7", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
                     RippleTextBox.ForeColor = Color.Red
                 Else
                     dblRipple = RippleTextBox.Text
@@ -481,52 +481,52 @@ Public Class MainForm
                 End If
             Else
                 dblRipple = -10000000.0
-                MsgBox("Пульсация напряжения введена неверно", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
+                MsgBox("РџСѓР»СЊСЃР°С†РёСЏ РЅР°РїСЂСЏР¶РµРЅРёСЏ РІРІРµРґРµРЅР° РЅРµРІРµСЂРЅРѕ", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
                 TabControl1.SelectTab(1)
                 RippleTextBox.Focus()
                 RippleTextBox.ForeColor = Color.Red
                 Exit Sub
-            End If 'попытка прочесть значение
-        End If 'пульсация напряжения не введена
-        'обработка данных, полученных из БД
+            End If 'РїРѕРїС‹С‚РєР° РїСЂРѕС‡РµСЃС‚СЊ Р·РЅР°С‡РµРЅРёРµ
+        End If 'РїСѓР»СЊСЃР°С†РёСЏ РЅР°РїСЂСЏР¶РµРЅРёСЏ РЅРµ РІРІРµРґРµРЅР°
+        'РѕР±СЂР°Р±РѕС‚РєР° РґР°РЅРЅС‹С…, РїРѕР»СѓС‡РµРЅРЅС‹С… РёР· Р‘Р”
         If dblYield = Nothing And dblFilter = Nothing And dblPower = Nothing And dblRip = Nothing Then
-            MsgBox("Не выбран рентгеновский аппарат из списка!", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
+            MsgBox("РќРµ РІС‹Р±СЂР°РЅ СЂРµРЅС‚РіРµРЅРѕРІСЃРєРёР№ Р°РїРїР°СЂР°С‚ РёР· СЃРїРёСЃРєР°!", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
             TabControl1.SelectTab(2)
             Me.DataGridView1.Focus()
             Exit Sub
         Else
             If dblYield = Nothing Then
-                MsgBox("Не задано значение радиационного выхода рентгеновского аппарата!", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
+                MsgBox("РќРµ Р·Р°РґР°РЅРѕ Р·РЅР°С‡РµРЅРёРµ СЂР°РґРёР°С†РёРѕРЅРЅРѕРіРѕ РІС‹С…РѕРґР° СЂРµРЅС‚РіРµРЅРѕРІСЃРєРѕРіРѕ Р°РїРїР°СЂР°С‚Р°!", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
                 Exit Sub
             End If
             If dblPower = Nothing Then
-                MsgBox("Не задано значение напряжения на аноде трубки рентгеновского аппарата, " & Chr(13) & "при котором измерялся радиационный выход!", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
+                MsgBox("РќРµ Р·Р°РґР°РЅРѕ Р·РЅР°С‡РµРЅРёРµ РЅР°РїСЂСЏР¶РµРЅРёСЏ РЅР° Р°РЅРѕРґРµ С‚СЂСѓР±РєРё СЂРµРЅС‚РіРµРЅРѕРІСЃРєРѕРіРѕ Р°РїРїР°СЂР°С‚Р°, " & Chr(13) & "РїСЂРё РєРѕС‚РѕСЂРѕРј РёР·РјРµСЂСЏР»СЃСЏ СЂР°РґРёР°С†РёРѕРЅРЅС‹Р№ РІС‹С…РѕРґ!", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
                 Exit Sub
             End If
             If dblRip = Nothing Then
-                MsgBox("Не задано значение РИП, при котором измерялся радиационный выход аппарата!", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
+                MsgBox("РќРµ Р·Р°РґР°РЅРѕ Р·РЅР°С‡РµРЅРёРµ Р РРџ, РїСЂРё РєРѕС‚РѕСЂРѕРј РёР·РјРµСЂСЏР»СЃСЏ СЂР°РґРёР°С†РёРѕРЅРЅС‹Р№ РІС‹С…РѕРґ Р°РїРїР°СЂР°С‚Р°!", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
                 Exit Sub
             End If
             If dblFilter = Nothing Then
-                MsgBox("Не задана величина фильтра, при котором измерялся радиационный выход!", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
+                MsgBox("РќРµ Р·Р°РґР°РЅР° РІРµР»РёС‡РёРЅР° С„РёР»СЊС‚СЂР°, РїСЂРё РєРѕС‚РѕСЂРѕРј РёР·РјРµСЂСЏР»СЃСЏ СЂР°РґРёР°С†РёРѕРЅРЅС‹Р№ РІС‹С…РѕРґ!", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
                 Exit Sub
             End If
         End If
-        'dblRateDev – радиационный выход в мР/с
+        'dblRateDev вЂ“ СЂР°РґРёР°С†РёРѕРЅРЅС‹Р№ РІС‹С…РѕРґ РІ РјР /СЃ
         dblRateDev = transformRate(dblYield, dblRip, strRipCh, dblFilter, strFilterCh, dblPower, dblPowerCh) * Math.Pow(dblRip / 100, 2)
-        ' поскольку радиационный выход задается в мР/с, необходимо пересчитать рентгены в Греи
+        ' РїРѕСЃРєРѕР»СЊРєСѓ СЂР°РґРёР°С†РёРѕРЅРЅС‹Р№ РІС‹С…РѕРґ Р·Р°РґР°РµС‚СЃСЏ РІ РјР /СЃ, РЅРµРѕР±С…РѕРґРёРјРѕ РїРµСЂРµСЃС‡РёС‚Р°С‚СЊ СЂРµРЅС‚РіРµРЅС‹ РІ Р“СЂРµРё
         DoseCoeff = 0.001 * dblRateDev * dblmAs
         Try
-            ' Интерполяция по фильтру, напряжению и пульсации напряжения
+            ' РРЅС‚РµСЂРїРѕР»СЏС†РёСЏ РїРѕ С„РёР»СЊС‚СЂСѓ, РЅР°РїСЂСЏР¶РµРЅРёСЋ Рё РїСѓР»СЊСЃР°С†РёРё РЅР°РїСЂСЏР¶РµРЅРёСЏ
             AbsorbedDosesInterp()
         Catch noRipple As Exception
-            MsgBox("Не указана пульсация напряжения.", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
+            MsgBox("РќРµ СѓРєР°Р·Р°РЅР° РїСѓР»СЊСЃР°С†РёСЏ РЅР°РїСЂСЏР¶РµРЅРёСЏ.", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
             TabControl1.SelectTab(1)
             RippleTextBox.Focus()
             Exit Sub
         End Try
-        CalculationForm.InfoOutputLabel.Text = "Регистрационный номер пациента: " + strRegnum + Chr(13) + strSurname + " " + strName + " " + strPatronymic + Chr(13) + "Дата обследования " & DateTimePicker1.Value.ToShortDateString & Chr(13) & "аппарат " _
-& strSelectedDeviceName & Chr(13) & strProcedureName & Chr(13) & "Параметры: " & dblmAs & " мАс, РИП=" & strRipCh & " см, напряжение=" & dblPowerCh.ToString & " кВ, " & Chr(13) & "поле облучения " & strWidthCh & " см x " & dbHeight.ToString & " см, фильтр=" & strFilterCh & " мм Al" & Chr(13) & "рад. выход=" & Math.Round(dblRateDev, 2).ToString & " мР/(мАс)" & Chr(13)
+        CalculationForm.InfoOutputLabel.Text = "Р РµРіРёСЃС‚СЂР°С†РёРѕРЅРЅС‹Р№ РЅРѕРјРµСЂ РїР°С†РёРµРЅС‚Р°: " + strRegnum + Chr(13) + strSurname + " " + strName + " " + strPatronymic + Chr(13) + "Р”Р°С‚Р° РѕР±СЃР»РµРґРѕРІР°РЅРёСЏ " & DateTimePicker1.Value.ToShortDateString & Chr(13) & "Р°РїРїР°СЂР°С‚ " _
+& strSelectedDeviceName & Chr(13) & strProcedureName & Chr(13) & "РџР°СЂР°РјРµС‚СЂС‹: " & dblmAs & " РјРђСЃ, Р РРџ=" & strRipCh & " СЃРј, РЅР°РїСЂСЏР¶РµРЅРёРµ=" & dblPowerCh.ToString & " РєР’, " & Chr(13) & "РїРѕР»Рµ РѕР±Р»СѓС‡РµРЅРёСЏ " & strWidthCh & " СЃРј x " & dbHeight.ToString & " СЃРј, С„РёР»СЊС‚СЂ=" & strFilterCh & " РјРј Al" & Chr(13) & "СЂР°Рґ. РІС‹С…РѕРґ=" & Math.Round(dblRateDev, 2).ToString & " РјР /(РјРђСЃ)" & Chr(13)
         CalculationForm.Label_optimal_dose_value.Text = DRLCheck()
         CalculationForm.DataOutput()
         ClearInput()
@@ -539,15 +539,15 @@ Public Class MainForm
         sngHeight = Nothing
         PatientWeightTextBox.Text = ""
         sngWeight = Nothing
-        'стереть регистрационный номер, чтобы это не пришлось делать пользователю
+        'СЃС‚РµСЂРµС‚СЊ СЂРµРіРёСЃС‚СЂР°С†РёРѕРЅРЅС‹Р№ РЅРѕРјРµСЂ, С‡С‚РѕР±С‹ СЌС‚Рѕ РЅРµ РїСЂРёС€Р»РѕСЃСЊ РґРµР»Р°С‚СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ
         RegistryNumTextBox.Text = ""
-        ' Стереть фамилию, чтобы это не пришлось делать пользователю
+        ' РЎС‚РµСЂРµС‚СЊ С„Р°РјРёР»РёСЋ, С‡С‚РѕР±С‹ СЌС‚Рѕ РЅРµ РїСЂРёС€Р»РѕСЃСЊ РґРµР»Р°С‚СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ
         FamilyNameTextBox.Text = ""
-        ' Стереть имя, чтобы это не пришлось делать пользователю
+        ' РЎС‚РµСЂРµС‚СЊ РёРјСЏ, С‡С‚РѕР±С‹ СЌС‚Рѕ РЅРµ РїСЂРёС€Р»РѕСЃСЊ РґРµР»Р°С‚СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ
         GivenNameTextBox.Text = ""
-        ' Стереть отчество, чтобы это не пришлось делать пользователю
+        ' РЎС‚РµСЂРµС‚СЊ РѕС‚С‡РµСЃС‚РІРѕ, С‡С‚РѕР±С‹ СЌС‚Рѕ РЅРµ РїСЂРёС€Р»РѕСЃСЊ РґРµР»Р°С‚СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ
         PatronymicTextBox.Text = ""
-        'это поле должно быть, т.к. при расчете следующей процедуры ввод данных начинается с ФИО пациента
+        'СЌС‚Рѕ РїРѕР»Рµ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ, С‚.Рє. РїСЂРё СЂР°СЃС‡РµС‚Рµ СЃР»РµРґСѓСЋС‰РµР№ РїСЂРѕС†РµРґСѓСЂС‹ РІРІРѕРґ РґР°РЅРЅС‹С… РЅР°С‡РёРЅР°РµС‚СЃСЏ СЃ Р¤РРћ РїР°С†РёРµРЅС‚Р°
         TabControl1.SelectTab(0)
         CalculationForm.Show()
         CalculationForm.Focus()
@@ -556,7 +556,7 @@ Public Class MainForm
     Private Sub ListBox1_Click(ByVal sender As Object, ByVal e As System.EventArgs)
         Select Case intDevType
             Case 0
-                MsgBox("Не указан тип аппарата", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
+                MsgBox("РќРµ СѓРєР°Р·Р°РЅ С‚РёРї Р°РїРїР°СЂР°С‚Р°", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
         End Select
     End Sub
     Private Sub ToolStripLabel1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripLabel1.Click
@@ -571,10 +571,10 @@ Public Class MainForm
         Dim intCurrRow As Integer
         intCurrRow = Me.DataGridView1.CurrentRow.Index
         If intCurrRow < 0 Then
-            MsgBox("Не выбрана строка таблицы для удаления", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
+            MsgBox("РќРµ РІС‹Р±СЂР°РЅР° СЃС‚СЂРѕРєР° С‚Р°Р±Р»РёС†С‹ РґР»СЏ СѓРґР°Р»РµРЅРёСЏ", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
             Return
         Else
-            If MsgBox("Из таблицы будет удалена строка. После нажатия кнопки ОК отмена удаления будет невозможна.", MsgBoxStyle.OkCancel, My.Resources.MainTitle) = MsgBoxResult.Ok Then
+            If MsgBox("РР· С‚Р°Р±Р»РёС†С‹ Р±СѓРґРµС‚ СѓРґР°Р»РµРЅР° СЃС‚СЂРѕРєР°. РџРѕСЃР»Рµ РЅР°Р¶Р°С‚РёСЏ РєРЅРѕРїРєРё РћРљ РѕС‚РјРµРЅР° СѓРґР°Р»РµРЅРёСЏ Р±СѓРґРµС‚ РЅРµРІРѕР·РјРѕР¶РЅР°.", MsgBoxStyle.OkCancel, My.Resources.MainTitle) = MsgBoxResult.Ok Then
                 drDeleted = dt2.Rows(intCurrRow)
                 drDeleted.Delete()
                 da2.Update(drDeleted)
@@ -591,10 +591,10 @@ Public Class MainForm
         End If
     End Sub
     Private Sub ToolStripLabel3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripLabel3.Click
-        'сохранить изменения в списке аппаратов
+        'СЃРѕС…СЂР°РЅРёС‚СЊ РёР·РјРµРЅРµРЅРёСЏ РІ СЃРїРёСЃРєРµ Р°РїРїР°СЂР°С‚РѕРІ
         Dim changedRecords As DataTable = dt2.GetChanges(Data.DataRowState.Modified)
         If (Not changedRecords Is Nothing) Then
-            'Нарушение параллелизма: UpdateCommand затронула 0 из ожидаемых 1 записей
+            'РќР°СЂСѓС€РµРЅРёРµ РїР°СЂР°Р»Р»РµР»РёР·РјР°: UpdateCommand Р·Р°С‚СЂРѕРЅСѓР»Р° 0 РёР· РѕР¶РёРґР°РµРјС‹С… 1 Р·Р°РїРёСЃРµР№
             da2.Update(changedRecords)
             ds.AcceptChanges()
         End If
@@ -702,10 +702,10 @@ Public Class MainForm
                 If Me.FIDComboBox.Items.Count = 1 Then
                     Me.FIDComboBox.SelectedText = Me.FIDComboBox.Items(0)
                 Else
-                    Me.FIDComboBox.Text = "Выберите РИП"
+                    Me.FIDComboBox.Text = "Р’С‹Р±РµСЂРёС‚Рµ Р РРџ"
                 End If
                 'erase FIDComboBox after changing the procedure and/Or after calculation
-                Me.VoltageProcLabel.Text = Global.RentgenCalculator.My.Resources.Resources.VoltageLabel + " (" + MinVoltage.ToString + " - " + MaxVoltage.ToString + " кВ)"
+                Me.VoltageProcLabel.Text = Global.RentgenCalculator.My.Resources.Resources.VoltageLabel + " (" + MinVoltage.ToString + " - " + MaxVoltage.ToString + " РєР’)"
             Else
                 Me.ProcedureDataGridView.DataSource = Nothing
                 Me.VoltageProcLabel.Text = Global.RentgenCalculator.My.Resources.Resources.VoltageLabel + "," + Global.RentgenCalculator.My.Resources.Resources.kiloVoltsshorttext
@@ -716,7 +716,7 @@ Public Class MainForm
         End If
         'Me.ActiveControl = ProcedureDataGridView
         'Me.ProcedureDataGridView.Focus()
-        Me.ProcedureDataGridView.Rows(0).Cells(0).Selected = True 'ArgumentOutOfRangeException; when age is not selected or the database doesn't have the record' эту строку вообще нужно будет убрать
+        Me.ProcedureDataGridView.Rows(0).Cells(0).Selected = True 'ArgumentOutOfRangeException; when age is not selected or the database doesn't have the record' СЌС‚Сѓ СЃС‚СЂРѕРєСѓ РІРѕРѕР±С‰Рµ РЅСѓР¶РЅРѕ Р±СѓРґРµС‚ СѓР±СЂР°С‚СЊ
         Me.ProcedureDataGridView.CurrentCell = Me.ProcedureDataGridView.Rows(0).Cells(0)
     End Sub
     Private Sub ProcTree_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles ProcTree.Click
@@ -729,11 +729,11 @@ Public Class MainForm
         Dim newDouble As Double
         Me.ProcedureDataGridView.Rows(e.RowIndex).ErrorText = ""
 
-        If ProcedureDataGridView.Rows(e.RowIndex).IsNewRow Then Return ' чтобы убрать эту строку, нужно отлаживать процесс заполнения таблицы: если она выполняется при 
+        If ProcedureDataGridView.Rows(e.RowIndex).IsNewRow Then Return ' С‡С‚РѕР±С‹ СѓР±СЂР°С‚СЊ СЌС‚Сѓ СЃС‚СЂРѕРєСѓ, РЅСѓР¶РЅРѕ РѕС‚Р»Р°Р¶РёРІР°С‚СЊ РїСЂРѕС†РµСЃСЃ Р·Р°РїРѕР»РЅРµРЅРёСЏ С‚Р°Р±Р»РёС†С‹: РµСЃР»Рё РѕРЅР° РІС‹РїРѕР»РЅСЏРµС‚СЃСЏ РїСЂРё 
         If Not Double.TryParse(e.FormattedValue.ToString(), newDouble) Then
 
             e.Cancel = True
-            Me.ProcedureDataGridView.Rows(e.RowIndex).ErrorText = "Неверный формат. Значение может быть только числом. (503)" ' при вводе в mAs 0,1
+            Me.ProcedureDataGridView.Rows(e.RowIndex).ErrorText = "РќРµРІРµСЂРЅС‹Р№ С„РѕСЂРјР°С‚. Р—РЅР°С‡РµРЅРёРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ С‚РѕР»СЊРєРѕ С‡РёСЃР»РѕРј. (503)" ' РїСЂРё РІРІРѕРґРµ РІ mAs 0,1
 
         End If
 
@@ -743,22 +743,22 @@ Public Class MainForm
                     If newDouble < 20 OrElse newDouble > 150 Then
 
                         e.Cancel = True
-                        Me.ProcedureDataGridView.Rows(e.RowIndex).ErrorText = "Неверное значение. Величина напряжения не может быть меньше 20 кВ или больше 150 кВ."
+                        Me.ProcedureDataGridView.Rows(e.RowIndex).ErrorText = "РќРµРІРµСЂРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ. Р’РµР»РёС‡РёРЅР° РЅР°РїСЂСЏР¶РµРЅРёСЏ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РјРµРЅСЊС€Рµ 20 РєР’ РёР»Рё Р±РѕР»СЊС€Рµ 150 РєР’."
                     End If
                 End If
             Case Me.ProcedureDataGridView.Columns("FilterDataGridViewTextBoxColumn").Index
                 If newDouble < 0 OrElse newDouble > 6 Then
 
                     e.Cancel = True
-                    Me.ProcedureDataGridView.Rows(e.RowIndex).ErrorText = "Неверное значение. Толщина фильтра не может быть меньше 0 мм или больше 6 мм Al."
+                    Me.ProcedureDataGridView.Rows(e.RowIndex).ErrorText = "РќРµРІРµСЂРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ. РўРѕР»С‰РёРЅР° С„РёР»СЊС‚СЂР° РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РјРµРЅСЊС€Рµ 0 РјРј РёР»Рё Р±РѕР»СЊС€Рµ 6 РјРј Al."
                 End If
 
-            Case Me.ProcedureDataGridView.Columns("FID").Index ' когда переключаешь назад во вкладку Пациент из выбранной процедуры
+            Case Me.ProcedureDataGridView.Columns("FID").Index ' РєРѕРіРґР° РїРµСЂРµРєР»СЋС‡Р°РµС€СЊ РЅР°Р·Р°Рґ РІРѕ РІРєР»Р°РґРєСѓ РџР°С†РёРµРЅС‚ РёР· РІС‹Р±СЂР°РЅРЅРѕР№ РїСЂРѕС†РµРґСѓСЂС‹
                 If Double.TryParse(e.FormattedValue.ToString(), newDouble) Then
                     If newDouble < 10 OrElse newDouble > 200 Then
 
                         e.Cancel = True
-                        Me.ProcedureDataGridView.Rows(e.RowIndex).ErrorText = "Неверное значение. Величина РИП не может быть меньше 10 см или больше 200 см."
+                        Me.ProcedureDataGridView.Rows(e.RowIndex).ErrorText = "РќРµРІРµСЂРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ. Р’РµР»РёС‡РёРЅР° Р РРџ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РјРµРЅСЊС€Рµ 10 СЃРј РёР»Рё Р±РѕР»СЊС€Рµ 200 СЃРј."
                     End If
                 End If
         End Select
@@ -776,7 +776,7 @@ Public Class MainForm
         If Not Double.TryParse(e.FormattedValue.ToString(), newDouble) Then
 
             e.Cancel = True
-            Me.DataGridView1.Rows(e.RowIndex).ErrorText = "Неверный формат. В ячейку можно ввести только числовое значение. (555)"
+            Me.DataGridView1.Rows(e.RowIndex).ErrorText = "РќРµРІРµСЂРЅС‹Р№ С„РѕСЂРјР°С‚. Р’ СЏС‡РµР№РєСѓ РјРѕР¶РЅРѕ РІРІРµСЃС‚Рё С‚РѕР»СЊРєРѕ С‡РёСЃР»РѕРІРѕРµ Р·РЅР°С‡РµРЅРёРµ. (555)"
 
         End If
 
@@ -787,7 +787,7 @@ Public Class MainForm
                     If newDouble < 20 OrElse newDouble > 150 Then
                         e.Cancel = True
                         Me.DataGridView1.Rows(e.RowIndex).ErrorText = _
-                        "Неверное значение. Величина напряжения не может быть меньше 20 кВ или больше 150 кВ."
+                        "РќРµРІРµСЂРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ. Р’РµР»РёС‡РёРЅР° РЅР°РїСЂСЏР¶РµРЅРёСЏ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РјРµРЅСЊС€Рµ 20 РєР’ РёР»Рё Р±РѕР»СЊС€Рµ 150 РєР’."
                     End If
                 End If
             Case Me.DataGridView1.Columns("YieldDataGridViewTextBoxColumn").Index 'error.Tip:use new keyword
@@ -796,29 +796,29 @@ Public Class MainForm
                     If Double.TryParse(e.FormattedValue.ToString(), newDouble) Then
                         If (e.FormattedValue > 1000000.0) Or (e.FormattedValue <= 0) Then
                             e.Cancel = True
-                            Me.DataGridView1.Rows(e.RowIndex).ErrorText = "Величина радиационного выхода РДА должна лежать в пределах от 0 до 10 мР."
+                            Me.DataGridView1.Rows(e.RowIndex).ErrorText = "Р’РµР»РёС‡РёРЅР° СЂР°РґРёР°С†РёРѕРЅРЅРѕРіРѕ РІС‹С…РѕРґР° Р Р”Рђ РґРѕР»Р¶РЅР° Р»РµР¶Р°С‚СЊ РІ РїСЂРµРґРµР»Р°С… РѕС‚ 0 РґРѕ 10 РјР ."
                         End If
                     Else
                         e.Cancel = True
-                        Me.DataGridView1.Rows(e.RowIndex).ErrorText = "Недействительное значение рацидационного выхода"
+                        Me.DataGridView1.Rows(e.RowIndex).ErrorText = "РќРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ СЂР°С†РёРґР°С†РёРѕРЅРЅРѕРіРѕ РІС‹С…РѕРґР°"
                         '                        Exit Sub
-                    End If 'проверка, введено ли правильное значение
+                    End If 'РїСЂРѕРІРµСЂРєР°, РІРІРµРґРµРЅРѕ Р»Рё РїСЂР°РІРёР»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ
                     'catch InvalidCastException
                 Else
                     e.Cancel = True
-                    Me.DataGridView1.Rows(e.RowIndex).ErrorText = "Введите значение рацидационного выхода"
+                    Me.DataGridView1.Rows(e.RowIndex).ErrorText = "Р’РІРµРґРёС‚Рµ Р·РЅР°С‡РµРЅРёРµ СЂР°С†РёРґР°С†РёРѕРЅРЅРѕРіРѕ РІС‹С…РѕРґР°"
                 End If
             Case Me.DataGridView1.Columns("FilterDataGridViewTextBoxColumn1").Index
                 If newDouble < 1 OrElse newDouble > 6 Then
                     e.Cancel = True
                     Me.DataGridView1.Rows(e.RowIndex).ErrorText = _
-                    "Неверное значение. Толщина фильтра не может быть меньше 1 мм или больше 6 мм Al."
+                    "РќРµРІРµСЂРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ. РўРѕР»С‰РёРЅР° С„РёР»СЊС‚СЂР° РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РјРµРЅСЊС€Рµ 1 РјРј РёР»Рё Р±РѕР»СЊС€Рµ 6 РјРј Al."
                 End If
                 'Case Me.DataGridView1.Columns("Rip").Index
                 'If Double.TryParse(e.FormattedValue.ToString(), newDouble) Then
                 '                If newDouble < 10 OrElse newDouble > 200 Then
                 '                e.Cancel = True
-                'Me.DataGridView1.Rows(e.RowIndex).ErrorText = "Неверное значение. Величина РИП не может быть меньше 10 см или больше 200 см."
+                'Me.DataGridView1.Rows(e.RowIndex).ErrorText = "РќРµРІРµСЂРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ. Р’РµР»РёС‡РёРЅР° Р РРџ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РјРµРЅСЊС€Рµ 10 СЃРј РёР»Рё Р±РѕР»СЊС€Рµ 200 СЃРј."
                 'End If
                 'End If
         End Select
@@ -827,31 +827,31 @@ Public Class MainForm
         Dim strStringContexts As String = ""
         If (e.Context = DataGridViewDataErrorContexts.Commit) _
             Then
-            strStringContexts = "при изменении значения ячейки."
+            strStringContexts = "РїСЂРё РёР·РјРµРЅРµРЅРёРё Р·РЅР°С‡РµРЅРёСЏ СЏС‡РµР№РєРё."
         End If
         If (e.Context = DataGridViewDataErrorContexts _
             .CurrentCellChange) Then
-            strStringContexts = "при изменении значения ячейки."
+            strStringContexts = "РїСЂРё РёР·РјРµРЅРµРЅРёРё Р·РЅР°С‡РµРЅРёСЏ СЏС‡РµР№РєРё."
         End If
         If (e.Context = DataGridViewDataErrorContexts.Parsing) _
             Then
-            strStringContexts = "при изменении значения ячейки."
+            strStringContexts = "РїСЂРё РёР·РјРµРЅРµРЅРёРё Р·РЅР°С‡РµРЅРёСЏ СЏС‡РµР№РєРё."
         End If
         If (e.Context = _
             DataGridViewDataErrorContexts.LeaveControl) Then
-            strStringContexts = "при изменении значения ячейки."
+            strStringContexts = "РїСЂРё РёР·РјРµРЅРµРЅРёРё Р·РЅР°С‡РµРЅРёСЏ СЏС‡РµР№РєРё."
         End If
         If (e.Context = _
                    DataGridViewDataErrorContexts.Formatting) Then
-            strStringContexts = "при изменении значения ячейки."
+            strStringContexts = "РїСЂРё РёР·РјРµРЅРµРЅРёРё Р·РЅР°С‡РµРЅРёСЏ СЏС‡РµР№РєРё."
         End If
         MsgBox(My.Resources.MsgDefault & strStringContexts, MsgBoxStyle.Exclamation, My.Resources.MainTitle)
 
         If (TypeOf (e.Exception) Is ConstraintException) Then
             Dim view As DataGridView = CType(sender, DataGridView)
-            view.Rows(e.RowIndex).ErrorText = "Ошибка"
+            view.Rows(e.RowIndex).ErrorText = "РћС€РёР±РєР°"
             view.Rows(e.RowIndex).Cells(e.ColumnIndex) _
-                .ErrorText = "Ошибка"
+                .ErrorText = "РћС€РёР±РєР°"
 
             e.ThrowException = False
         End If
@@ -864,23 +864,23 @@ Public Class MainForm
  (e.Context = DataGridViewDataErrorContexts.Parsing) Or _
  (e.Context = DataGridViewDataErrorContexts.LeaveControl) Or _
  (e.Context = DataGridViewDataErrorContexts.Formatting)) Then
-            strStringContexts = "при изменении значения ячейки."
+            strStringContexts = "РїСЂРё РёР·РјРµРЅРµРЅРёРё Р·РЅР°С‡РµРЅРёСЏ СЏС‡РµР№РєРё."
         End If
-        MsgBox("Произошла ошибка " & strStringContexts, MsgBoxStyle.Exclamation, My.Resources.MainTitle) ' при вводе дробного зачения напряжения
+        MsgBox("РџСЂРѕРёР·РѕС€Р»Р° РѕС€РёР±РєР° " & strStringContexts, MsgBoxStyle.Exclamation, My.Resources.MainTitle) ' РїСЂРё РІРІРѕРґРµ РґСЂРѕР±РЅРѕРіРѕ Р·Р°С‡РµРЅРёСЏ РЅР°РїСЂСЏР¶РµРЅРёСЏ
 
         If (TypeOf (e.Exception) Is ConstraintException) Then
             Dim view As DataGridView = CType(sender, DataGridView)
-            view.Rows(e.RowIndex).ErrorText = "Ошибка"
+            view.Rows(e.RowIndex).ErrorText = "РћС€РёР±РєР°"
             view.Rows(e.RowIndex).Cells(e.ColumnIndex) _
-                .ErrorText = "Ошибка"
+                .ErrorText = "РћС€РёР±РєР°"
 
             e.ThrowException = False
         End If
 
     End Sub
     Private Sub DataGridView1_SelectionChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles DataGridView1.SelectionChanged
-        'теоретически, эта процедура может сильно подтормаживать программу, если много раз щелкать по таблице
-        ' а еще ее нужно переработать, чтобы не надо было все время выбирать прибор, если он всего один
+        'С‚РµРѕСЂРµС‚РёС‡РµСЃРєРё, СЌС‚Р° РїСЂРѕС†РµРґСѓСЂР° РјРѕР¶РµС‚ СЃРёР»СЊРЅРѕ РїРѕРґС‚РѕСЂРјР°Р¶РёРІР°С‚СЊ РїСЂРѕРіСЂР°РјРјСѓ, РµСЃР»Рё РјРЅРѕРіРѕ СЂР°Р· С‰РµР»РєР°С‚СЊ РїРѕ С‚Р°Р±Р»РёС†Рµ
+        ' Р° РµС‰Рµ РµРµ РЅСѓР¶РЅРѕ РїРµСЂРµСЂР°Р±РѕС‚Р°С‚СЊ, С‡С‚РѕР±С‹ РЅРµ РЅР°РґРѕ Р±С‹Р»Рѕ РІСЃРµ РІСЂРµРјСЏ РІС‹Р±РёСЂР°С‚СЊ РїСЂРёР±РѕСЂ, РµСЃР»Рё РѕРЅ РІСЃРµРіРѕ РѕРґРёРЅ
         If Me.DataGridView1.Focused Then '? the opposite situation and this event occurs when the form loads
             If Me.DataGridView1.Rows.Count > 1 Then '?check whether there are any devices in the list of currently used devices
                 If Not Me.DataGridView1.CurrentRow.Cells("DeviceNameDataGridViewTextBoxColumn").Value Is Nothing Then
@@ -917,7 +917,7 @@ Public Class MainForm
                         dblFilter = Me.DataGridView1.CurrentRow.Cells("FilterDataGridViewTextBoxColumn1").Value
                     End If
                 Else
-                    dblFilter = Nothing ' это будет означать, что ни один прибор не выбран
+                    dblFilter = Nothing ' СЌС‚Рѕ Р±СѓРґРµС‚ РѕР·РЅР°С‡Р°С‚СЊ, С‡С‚Рѕ РЅРё РѕРґРёРЅ РїСЂРёР±РѕСЂ РЅРµ РІС‹Р±СЂР°РЅ
                 End If
             End If
         End If
@@ -933,7 +933,7 @@ Public Class MainForm
         Dim helpFileName As String = Environment.CurrentDirectory & "\XRayCalc.chm"
         Help.ShowHelp(Me, helpFileName) 'could be parent or navigator
     End Sub
-    Private Sub НастройкиToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SettingsToolStripMenuItem.Click
+    Private Sub РќР°СЃС‚СЂРѕР№РєРёToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SettingsToolStripMenuItem.Click
         NewApparatusForm.ShowDialog()
         'below the file RentgenCalculator.ini should be considered
         'If
@@ -946,7 +946,7 @@ Public Class MainForm
             If Double.TryParse(RippleTextBox.Text, dblRipple) Then
                 If Convert.ToDouble(RippleTextBox.Text) < 0 Or Convert.ToDouble(RippleTextBox.Text) > 7 Then
 
-                    'MsgBox("Введено неверное значение пульсации напряжения. Значение может быть в пределах от 0 до 7", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
+                    'MsgBox("Р’РІРµРґРµРЅРѕ РЅРµРІРµСЂРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ РїСѓР»СЊСЃР°С†РёРё РЅР°РїСЂСЏР¶РµРЅРёСЏ. Р—РЅР°С‡РµРЅРёРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РІ РїСЂРµРґРµР»Р°С… РѕС‚ 0 РґРѕ 7", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
                     RippleTextBox.ForeColor = Color.Red
                 Else
                     dblRipple = RippleTextBox.Text
@@ -954,8 +954,8 @@ Public Class MainForm
                 End If
             Else
                 dblRipple = -1
-                ToolTip1.Show(My.Resources.MsgDefault + "при вводе пульсации напряжения.", RippleTextBox, 2000)
-                'MsgBox(My.Resources.MsgDefault + " при вводе пульсации напряжения.", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
+                ToolTip1.Show(My.Resources.MsgDefault + "РїСЂРё РІРІРѕРґРµ РїСѓР»СЊСЃР°С†РёРё РЅР°РїСЂСЏР¶РµРЅРёСЏ.", RippleTextBox, 2000)
+                'MsgBox(My.Resources.MsgDefault + " РїСЂРё РІРІРѕРґРµ РїСѓР»СЊСЃР°С†РёРё РЅР°РїСЂСЏР¶РµРЅРёСЏ.", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
                 RippleTextBox.ForeColor = Color.Red
             End If 'try parse
         End If
@@ -963,17 +963,17 @@ Public Class MainForm
     Private Sub TextBox1_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RegistryNumTextBox.Leave
         If (RegistryNumTextBox.Text = Nothing) Or (RegistryNumTextBox.Text = "") Then
             Dim ToolTip2 As New ToolTip
-            ToolTip2.Show("Пожалуйста, введите регистрационный номер", RegistryNumTextBox, 2000)
+            ToolTip2.Show("РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РІРІРµРґРёС‚Рµ СЂРµРіРёСЃС‚СЂР°С†РёРѕРЅРЅС‹Р№ РЅРѕРјРµСЂ", RegistryNumTextBox, 2000)
         End If
     End Sub
 
     Private Sub VoltageTextBox_Validating(ByVal sender As System.Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles VoltageProcTextBox.Validating
         If VoltageProcTextBox.Text = "" Then
-            ToolTip1.Show("Пожалуйста, введите напряжение", VoltageProcTextBox, 2000)
+            ToolTip1.Show("РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РІРІРµРґРёС‚Рµ РЅР°РїСЂСЏР¶РµРЅРёРµ", VoltageProcTextBox, 2000)
         Else
             If Double.TryParse(VoltageProcTextBox.Text, dblPower) Then
                 If dblPower < MinVoltage Then
-                    ToolTip1.Show("Значение напряжения должно быть выше " & MinVoltage, VoltageProcTextBox, 2000)
+                    ToolTip1.Show("Р—РЅР°С‡РµРЅРёРµ РЅР°РїСЂСЏР¶РµРЅРёСЏ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ РІС‹С€Рµ " & MinVoltage, VoltageProcTextBox, 2000)
                     VoltageProcTextBox.ForeColor = Color.Red
                 ElseIf dblPower > MaxVoltage Then
                     ToolTip1.Show(My.Resources.WarningHighVoltage & " " & MaxVoltage, VoltageProcTextBox, 2000)
@@ -983,7 +983,7 @@ Public Class MainForm
                     VoltageProcTextBox.BackColor = Color.White
                 End If
             Else
-                ToolTip1.Show("Неверный формат числа. Разделителем целой и дробной части должна быть запятая", VoltageProcTextBox, 2000)
+                ToolTip1.Show("РќРµРІРµСЂРЅС‹Р№ С„РѕСЂРјР°С‚ С‡РёСЃР»Р°. Р Р°Р·РґРµР»РёС‚РµР»РµРј С†РµР»РѕР№ Рё РґСЂРѕР±РЅРѕР№ С‡Р°СЃС‚Рё РґРѕР»Р¶РЅР° Р±С‹С‚СЊ Р·Р°РїСЏС‚Р°СЏ", VoltageProcTextBox, 2000)
                 VoltageProcTextBox.ForeColor = Color.Red
             End If
         End If
@@ -993,7 +993,7 @@ Public Class MainForm
         'Dim ToolTip5 As New ToolTip
         If Not (FilterTextBox.Text Is Nothing) Then
             If FilterTextBox.Text.Length = 0 Then
-                ToolTip1.Show("Пожалуйста, введите толщину фильтра рентгеновской трубки.", FilterTextBox, 2000)
+                ToolTip1.Show("РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РІРІРµРґРёС‚Рµ С‚РѕР»С‰РёРЅСѓ С„РёР»СЊС‚СЂР° СЂРµРЅС‚РіРµРЅРѕРІСЃРєРѕР№ С‚СЂСѓР±РєРё.", FilterTextBox, 2000)
                 TabControl1.SelectTab(1)
             Else
                 Try
@@ -1003,11 +1003,11 @@ Public Class MainForm
                 End Try
                 If Not Double.TryParse(FilterTextBox.Text, dblFilter2) Then
                     'Dim ToolTip1 As New ToolTip
-                    ToolTip1.Show("Неверный формат данных. Введите число.", FilterTextBox, 2000)
+                    ToolTip1.Show("РќРµРІРµСЂРЅС‹Р№ С„РѕСЂРјР°С‚ РґР°РЅРЅС‹С…. Р’РІРµРґРёС‚Рµ С‡РёСЃР»Рѕ.", FilterTextBox, 2000)
                     FilterTextBox.ForeColor = Color.Red
                 Else
                     If (FilterTextBox.Text < 0.1) Or (FilterTextBox.Text > 6) Then
-                        ToolTip1.Show("Значение фильтра должно лежать в пределах от 0.1 до 6 мм.", FilterTextBox, 2000)
+                        ToolTip1.Show("Р—РЅР°С‡РµРЅРёРµ С„РёР»СЊС‚СЂР° РґРѕР»Р¶РЅРѕ Р»РµР¶Р°С‚СЊ РІ РїСЂРµРґРµР»Р°С… РѕС‚ 0.1 РґРѕ 6 РјРј.", FilterTextBox, 2000)
                         FilterTextBox.ForeColor = Color.Red
                     Else
                         FilterTextBox.ForeColor = Color.Black
@@ -1019,21 +1019,21 @@ Public Class MainForm
 
     Private Sub mAsTextBox_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mAsTextBox.Leave
         Dim mAsTextBoxTooltip As New ToolTip
-        mAsTextBoxTooltip.ToolTipTitle = "мАс"
+        mAsTextBoxTooltip.ToolTipTitle = "РјРђСЃ"
         If mAsTextBox.Text = "" Then
-            mAsTextBoxTooltip.Show("Пожалуйста, введите мАс", mAsTextBox, 2000)
+            mAsTextBoxTooltip.Show("РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РІРІРµРґРёС‚Рµ РјРђСЃ", mAsTextBox, 2000)
         ElseIf Not Double.TryParse(mAsTextBox.Text, dblmAs) Then
-            mAsTextBoxTooltip.Show("Неверный формат данных. Введите число.", mAsTextBox, 2000)
-            'MsgBox("Неверный формат данных. Введите число.", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
+            mAsTextBoxTooltip.Show("РќРµРІРµСЂРЅС‹Р№ С„РѕСЂРјР°С‚ РґР°РЅРЅС‹С…. Р’РІРµРґРёС‚Рµ С‡РёСЃР»Рѕ.", mAsTextBox, 2000)
+            'MsgBox("РќРµРІРµСЂРЅС‹Р№ С„РѕСЂРјР°С‚ РґР°РЅРЅС‹С…. Р’РІРµРґРёС‚Рµ С‡РёСЃР»Рѕ.", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
             mAsTextBox.ForeColor = Color.Red
         Else
             mAsTextBox.ForeColor = Color.Black
             If dblmAs < 0.1 OrElse dblmAs > 1000 Then
-                mAsTextBoxTooltip.Show("Введено неверное значение мАс. Величина мАс не может быть меньше 0,1 или больше 1000.", mAsTextBox, 2000)
-                '    MsgBox("Введено неверное значение мАс. Величина мАс не может быть меньше 0,1 или больше 1000.", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
+                mAsTextBoxTooltip.Show("Р’РІРµРґРµРЅРѕ РЅРµРІРµСЂРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ РјРђСЃ. Р’РµР»РёС‡РёРЅР° РјРђСЃ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РјРµРЅСЊС€Рµ 0,1 РёР»Рё Р±РѕР»СЊС€Рµ 1000.", mAsTextBox, 2000)
+                '    MsgBox("Р’РІРµРґРµРЅРѕ РЅРµРІРµСЂРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ РјРђСЃ. Р’РµР»РёС‡РёРЅР° РјРђСЃ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РјРµРЅСЊС€Рµ 0,1 РёР»Рё Р±РѕР»СЊС€Рµ 1000.", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
                 Exit Sub
             Else
-                dblmAs = Convert.ToDouble(mAsTextBox.Text, CultureInfo.CurrentUICulture) 'подпрограмма сделана 18.2.2019
+                dblmAs = Convert.ToDouble(mAsTextBox.Text, CultureInfo.CurrentUICulture) 'РїРѕРґРїСЂРѕРіСЂР°РјРјР° СЃРґРµР»Р°РЅР° 18.2.2019
             End If
         End If
     End Sub
