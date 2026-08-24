@@ -54,7 +54,7 @@ Public Class NewApparatusForm
             MainForm.DataGridView1.DataSource = dt2
             Me.DevicesListBox.ClearSelected()
         Else
-            MsgBox("Выберите рентгеновский аппарат из списка!", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
+            MsgBox("Р’С‹Р±РµСЂРёС‚Рµ СЂРµРЅС‚РіРµРЅРѕРІСЃРєРёР№ Р°РїРїР°СЂР°С‚ РёР· СЃРїРёСЃРєР°!", MsgBoxStyle.Exclamation, My.Resources.MainTitle)
         End If
     End Sub
     Private Sub RemoveButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RemoveButton.Click
