@@ -1,4 +1,6 @@
 # doseassessment
+![GitHub License](https://img.shields.io/github/license/kutsen/doseassessment)
+
 Dose Assessment
 
 Utility for assess organ doses and effective dose to patient during diagnostic radiography exposure.
