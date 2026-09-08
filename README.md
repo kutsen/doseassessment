@@ -1,5 +1,6 @@
 # doseassessment
 ![GitHub License](https://img.shields.io/github/license/kutsen/doseassessment)
+![GitHub Release](https://img.shields.io/github/v/release/kutsen/doseassessment)
 
 Dose Assessment
 
